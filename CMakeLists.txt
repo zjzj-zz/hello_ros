@@ -10,8 +10,22 @@ project(hello_ros)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
+  std_msgs
 )
 
+include_directories(
+  ${catkin_INCLUDE_DIRS}
+)
+
+add_executable(basic_simple_talker   src/basic_simple_talker.cpp)
+add_executable(basic_simple_listener src/basic_simple_listener.cpp)
+
+target_link_libraries(basic_simple_talker
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(basic_simple_listener
+  ${catkin_LIBRARIES}
+)
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
